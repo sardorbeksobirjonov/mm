@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sevgi Sehrli Sayti</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffcccc;
+            position: relative;
+        }
+        .button {
+            position: absolute;
+            z-index: 2;
+            padding: 15px 30px;
+            font-size: 20px;
+            background-color: #ff0066;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .message {
+            display: none;
+            position: absolute;
+            z-index: 3;
+            font-size: 25px;
+            color: white;
+            text-shadow: 2px 2px 4px black;
+            text-align: center;
+            max-width: 80%;
+        }
+        .rain-heart {
+            position: absolute;
+            top: -50px;
+            font-size: 30px;
+            color: red;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="button" onclick="showMessage()">Tugmani bosing</button>
+    <div class="message" id="loveMessage" style="display: none;">
+        ✨ <b>Dilnoza, yuraging sening ismingday nozik, muhabbatga to‘la!</b> ✨<br><br>
+        Sening tabassuming quyoshdek porlaydi, so‘zlaring esa mayin shabada kabi qalbimni silaydi. 
+        Har bir nafas olishing menga hayot baxsh etadi, har bir nigohing yuragimni ilitadi. ❤️<br><br>
+        💖 <b>Bu sevgi sehri seni hech qachon tark etmaydi.</b> 💖<br>
+        Qayerga borsang ham, kim bilan bo‘lsang ham, mening qalbimda faqat sen bor! 
+        Osmon yulduzlarida senga atalgan tilaklar porlaydi, yomg‘ir tomchilarida esa yuragimning shivir-shivirlari aks etadi. ✨<br><br>
+        Agar bu so‘zlarni o‘qib bosgan bo‘lsang, bilki... <b>sen mening orzum, mening sevgim va eng go‘zal sehrimsan!</b> 🥰💫<br>
+        ❤️ <b>Bu sevgi sehrini yuragingda saqla!</b> ❤️
+    </div>
+    <script>
+        function showMessage() {
+            document.querySelector('#loveMessage').style.display = 'block';
+            document.querySelector('.button').style.display = 'none';
+            startHeartRain();
+        }
+        
+        function startHeartRain() {
+            setInterval(() => {
+                let heart = document.createElement('div');
+                heart.classList.add('rain-heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }, 100);
+        }
+    </script>
+</body>
+</html>
